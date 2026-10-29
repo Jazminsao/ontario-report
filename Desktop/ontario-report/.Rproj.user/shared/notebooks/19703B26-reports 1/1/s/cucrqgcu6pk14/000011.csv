@@ -1,0 +1,9 @@
+"0","ggplot(data = sample_data) +
+  aes(x = temperature, y = cells_per_ml/1000000, color=env_group) +
+  geom_point() +
+  labs(x = ""Temperature (Celsius)"", y = ""Cells(million/ml)"",
+       title= ""Are temperature and cell abundance linked?"")
+"
+"2","Error en ggplot(data = sample_data): 
+  no se pudo encontrar la función ""ggplot""
+"

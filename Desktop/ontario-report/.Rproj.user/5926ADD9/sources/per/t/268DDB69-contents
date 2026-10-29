@@ -1,0 +1,105 @@
+---
+title: "Ejercicio Bioinfo"
+author: "Jazmin Salazar"
+date: "2026-10-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Esto se realiza analizar la data y agregar paquetes
+```{r data}
+library (tidyverse)
+sample_data <- read_csv("sample_data.csv")
+```
+
+```{r}
+ggplot(sample_data, aes(x=total_nitrogen,y=cells_per_ml)) +
+geom_point() +
+facet_wrap(~env_group)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Investigar los nutrientes y la densidad celular
+
+
+
+
+
+
+
+
+
+
+
+
+Una hipótesis que se podría plantear es si existe una relación entre la concentración de nitrógeno total y la abundancia de células por mililitro, y esta relación varía según la profundidad y el periodo de muestreo.
+Al presentarse un valor atípico se realiza lo siguiente y según el mapa esta fuera del área de muestreo
+```{r}
+sample_data %>% 
+ filter(env_group == "Shallow_May") %>% 
+ arrange(desc(total_nitrogen))
+```
+Pero además se observa datos atípicos en el mes de septiembre para lo cual se aplica otro filtro.
+```{r}
+sample_data %>%
+  filter(env_group == "Shallow_September") %>%
+  ggplot(aes(x = total_nitrogen, y = cells_per_ml)) + 
+  geom_text(aes(label = sample_id))
+```
+
+
+Se atribuye estos datos atípicos a un proceso de afloramiento.El afloramiento puede transportar nutrientes desde aguas profundas hacia la superficie y modificar la distribución de las comunidades celulares. Sin embargo, para atribuir los valores observados a este fenómeno sería necesario disponer de mediciones de temperatura, nutrientes y, de ser posible, indicadores de circulación o mezcla del agua.
+
+Comparación del filo dominante entre grupos ambientales
+```{r}
+sample_data %>%
+  ggplot(aes(x = env_group, y = chlorophyll)) + 
+  geom_boxplot()
+```
+La concentración de clorofila mostró patrones de variación entre los grupos evaluados. El grupo Shallow May presentó una mediana aparentemente superior y una mayor dispersión de los datos respecto a Deep y Shallow September. En Deep se observó un valor aislado elevado. Estas diferencias son descriptivas y requieren pruebas estadísticas para determinar si son significativas.
+```{r sample}
+library (tidyverse)
+taxon_abundance <- read_csv("taxon_abundance.csv")
+```
+Para continuar analizando,los múltiples Phylum y su abundancia, necesitamos revisar la data. 
+
+
+```{r}
+taxon_abundance %>%
+  pivot_longer(cols = ...2:...7, names_to = "Phylum", values_to = "Abundance") %>%
+  ggplot(aes(x = `Taxon Abundance from Lake Ontario` , y = Abundance, fill = Phylum)) + 
+  geom_boxplot()
+```
+
+
+  
+
+
+
+
+

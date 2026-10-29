@@ -1,0 +1,7 @@
+"0","taxon_abundance %>%"
+"0","  pivot_longer(cols = ...2:...7, names_to = ""Phylum"", values_to = ""Abundance"") %>%"
+"0","  ggplot(aes(x = `Taxon Abundance from Lake Ontario` , y = Abundance, fill = Phylum)) + "
+"0","  geom_boxplot()"
+"2","Error en taxon_abundance %>% pivot_longer(cols = ...2:...7, names_to = ""Phylum"", : 
+  no se pudo encontrar la función ""%>%""
+"

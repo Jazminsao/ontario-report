@@ -1,0 +1,18 @@
+---
+title: "IntegradoBioinfo"
+author: "Jazmin Salazar"
+date: "2026-10-27"
+output: html_document
+---
+
+```{r data}
+sample_data <- read_csv("sample_data.csv")
+```
+
+
+
+
+
+
+
+

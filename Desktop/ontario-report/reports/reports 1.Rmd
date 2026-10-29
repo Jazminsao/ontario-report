@@ -1,0 +1,20 @@
+---
+title: "Informatica"
+author: "Jazmin Salazar"
+date: "2026-10-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(tidyverse)
+```
+```{r data}
+sample_data <- read_csv("sample_data.csv")
+```
+
+```
+Aquí se está solicitando un gráfico donde se considere de la data el total de nitrógeno y el número de células por militro.
